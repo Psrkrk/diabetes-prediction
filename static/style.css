@@ -1,0 +1,97 @@
+/* General Styles */
+body {
+    background: url('https://myhealth-redcliffelabs.redcliffelabs.com/media/blogcard-images/3727/087a5f43-6ecf-4806-927a-bc738a47291a.jpg') no-repeat center center/cover;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Container with Dark Border */
+.container {
+    background: white;
+    padding: 20px;  /* Reduced padding */
+    border-radius: 8px;  /* Reduced border-radius */
+    border: 2px solid #333; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    max-height: 90vh;  /* Prevents form from growing too much */
+    overflow-y: auto;  /* Enables scrolling if needed */
+}
+
+/* Logo */
+.logo {
+    width: 70px;
+    margin-bottom: 5px;  /* Reduced margin */
+}
+
+/* Title */
+h2 {
+    color: #333;
+    margin-bottom: 15px;  /* Reduced margin */
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Input Box */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;  /* Reduced margin */
+    text-align: left;
+    width: 100%;
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    padding: 10px;  /* Reduced padding */
+    border: none;
+    border-radius: 20px;  /* Slightly smaller border-radius */
+    background: #f0f2f5;
+    color: #333;
+    font-size: 14px;  /* Slightly smaller font */
+    transition: 0.3s;
+    border: 1px solid #666;
+}
+
+input:focus {
+    outline: none;
+    background: #e2e6ea;
+    border-color: #000;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 10px;  /* Reduced padding */
+    background: #ff7f27;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #e36b1f;
+}
+
+/* Result */
+#result {
+    font-size: 16px;  /* Reduced font size */
+    font-weight: bold;
+    margin-top: 10px;  /* Reduced margin */
+}

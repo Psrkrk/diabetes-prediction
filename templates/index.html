@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="../static/logo.webp" alt="Logo" class="logo">
+
+        <h2>Diabetes Prediction</h2>
+        <form id="diabetesForm" onsubmit="event.preventDefault(); sendData();">
+            <div class="input-group">
+                <label>Pregnancies</label>
+                <input type="number" name="Pregnancies" required>
+            </div>
+            <div class="input-group">
+                <label>Glucose</label>
+                <input type="number" name="Glucose" required>
+            </div>
+            <div class="input-group">
+                <label>Blood Pressure</label>
+                <input type="number" name="BloodPressure" required>
+            </div>
+            <div class="input-group">
+                <label>Skin Thickness</label>
+                <input type="number" name="SkinThickness" required>
+            </div>
+            <div class="input-group">
+                <label>Insulin</label>
+                <input type="number" name="Insulin" required>
+            </div>
+            <div class="input-group">
+                <label>BMI</label>
+                <input type="number" name="BMI" required>
+            </div>
+            <div class="input-group">
+                <label>Diabetes Pedigree Function</label>
+                <input type="number" step="0.01" name="DiabetesPedigreeFunction" required>
+            </div>
+            <div class="input-group">
+                <label>Age</label>
+                <input type="number" name="Age" required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        <p id="result"></p>
+    </div>
+
+    <script>
+    async function sendData() {
+        const formData = new FormData(document.getElementById("diabetesForm"));
+        const jsonData = Object.fromEntries(formData.entries());
+
+        const response = await fetch("/predict", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(jsonData),
+        });
+
+        const result = await response.json();
+        document.getElementById("result").innerText = 
+            result.prediction === 1 ? "Diabetic" : "Not Diabetic";
+    }
+    </script>
+</body>
+</html>
