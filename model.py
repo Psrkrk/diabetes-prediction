@@ -26,4 +26,4 @@ model.fit(X_train_scaled, y_train)
 with open('model.pkl', 'wb') as f:
     pickle.dump((scaler, model), f)
 
-print("Model training complete. Model saved as 'model.pkl'.")
+print("✅ Model training complete. Model saved as 'model.pkl'.")

@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diabetes Prediction</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <img src="../static/logo.webp" alt="Logo" class="logo">
+        <img src="{{ url_for('static', filename='logo.webp') }}" alt="Logo" class="logo">
 
         <h2>Diabetes Prediction</h2>
         <form id="diabetesForm" onsubmit="event.preventDefault(); sendData();">
@@ -53,6 +53,11 @@
     async function sendData() {
         const formData = new FormData(document.getElementById("diabetesForm"));
         const jsonData = Object.fromEntries(formData.entries());
+
+        // Convert values to numbers
+        Object.keys(jsonData).forEach(key => {
+            jsonData[key] = parseFloat(jsonData[key]);
+        });
 
         const response = await fetch("/predict", {
             method: "POST",

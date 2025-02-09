@@ -16,14 +16,22 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Extract form data
-        data = [float(request.form[key]) for key in request.form]
-        scaled_data = scaler.transform([data])
+        # Extract JSON data from request
+        data = request.get_json()
+        
+        # Convert all values to float
+        input_data = np.array([[float(data[key]) for key in data]])
+        
+        # Scale input data
+        scaled_data = scaler.transform(input_data)
+        
+        # Predict outcome
         prediction = model.predict(scaled_data)[0]
         
         return jsonify({'prediction': int(prediction)})
+    
     except Exception as e:
-        return jsonify({'error': str(e)})
+        return jsonify({'error': str(e)}), 400
 
 if __name__ == '__main__':
     app.run(debug=True)
