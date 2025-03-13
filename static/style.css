@@ -1,97 +1,222 @@
 /* General Styles */
 body {
     background: url('https://myhealth-redcliffelabs.redcliffelabs.com/media/blogcard-images/3727/087a5f43-6ecf-4806-927a-bc738a47291a.jpg') no-repeat center center/cover;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden;
+    padding: 20px;
 }
 
-/* Container with Dark Border */
+/* Container */
 .container {
-    background: white;
-    padding: 20px;  /* Reduced padding */
-    border-radius: 8px;  /* Reduced border-radius */
-    border: 2px solid #333; 
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
-    max-height: 90vh;  /* Prevents form from growing too much */
-    overflow-y: auto;  /* Enables scrolling if needed */
+    max-width: 700px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Fade-in animation for container */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 /* Logo */
 .logo {
-    width: 70px;
-    margin-bottom: 5px;  /* Reduced margin */
+    width: 80px;
+    height: auto;
+    margin: 0 auto 1.5rem;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
 }
 
 /* Title */
 h2 {
-    color: #333;
-    margin-bottom: 15px;  /* Reduced margin */
+    color: #1a2526;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Slide-in animation for title */
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateX(-20px); }
+    100% { opacity: 1; transform: translateX(0); }
 }
 
 /* Form Styling */
 form {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 1rem 1.5rem; /* Adjusted gap for better spacing */
+    align-items: start; /* Align items at the top */
 }
 
-/* Input Box */
+/* Input Group */
 .input-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 8px;  /* Reduced margin */
-    text-align: left;
-    width: 100%;
+    gap: 0.4rem;
+    animation: fadeInUp 0.5s ease-out forwards;
+    animation-delay: calc(0.1s * var(--index)); /* Staggered animation */
+}
+
+/* Fade-in-up animation for input groups */
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.input-group label {
+    color: #1a2526;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 /* Input Fields */
 input {
     width: 100%;
-    padding: 10px;  /* Reduced padding */
-    border: none;
-    border-radius: 20px;  /* Slightly smaller border-radius */
-    background: #f0f2f5;
-    color: #333;
-    font-size: 14px;  /* Slightly smaller font */
-    transition: 0.3s;
-    border: 1px solid #666;
+    max-width: 150px; /* Reduced input length */
+    padding: 8px 12px;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.7);
+    color: #1a2526;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(3px);
+}
+
+input::placeholder {
+    color: #3b4a4b;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
 }
 
 input:focus {
     outline: none;
-    background: #e2e6ea;
-    border-color: #000;
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #1a1a1a;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+    transform: scale(1.02);
+}
+
+input:focus::placeholder {
+    opacity: 0.5;
 }
 
 /* Button */
 button {
-    width: 100%;
-    padding: 10px;  /* Reduced padding */
+    grid-column: 1 / -1;
+    padding: 12px;
     background: #ff7f27;
     border: none;
-    border-radius: 20px;
+    border-radius: 8px;
     color: white;
-    font-size: 14px;
+    font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    opacity: 0.9;
+    animation: fadeInUp 0.5s ease-out;
 }
 
 button:hover {
     background: #e36b1f;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 127, 39, 0.4);
+    opacity: 1;
 }
 
 /* Result */
 #result {
-    font-size: 16px;  /* Reduced font size */
-    font-weight: bold;
-    margin-top: 10px;  /* Reduced margin */
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 1.2rem;
+    text-align: center;
+    color: #1a2526;
+    padding: 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(3px);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Result animation */
+#result.show {
+    animation: resultFadeIn 0.5s ease-in-out;
+}
+
+@keyframes resultFadeIn {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+        margin: 10px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .logo {
+        width: 60px;
+    }
+
+    form {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+
+    input {
+        max-width: 100%; /* Full width on smaller screens */
+        padding: 7px 10px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    button {
+        padding: 10px;
+    }
+
+    input {
+        padding: 6px 8px;
+        font-size: 0.8rem;
+    }
 }
