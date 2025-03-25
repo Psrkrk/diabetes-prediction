@@ -9,6 +9,9 @@ with open('model.pkl', 'rb') as f:
 # Initialize Flask app
 app = Flask(__name__)
 
+
+app = Flask(__name__, static_url_path='', static_folder='static')
+
 @app.route('/')
 def home():
     return render_template('index.html')
